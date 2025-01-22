@@ -1,12 +1,14 @@
 import React, { useState } from 'react'
 
-export default function Counter() {
+export default function Counter({setMainCounter}) {
 const[count,setCount]=useState(0)
 const increement=()=>{
 setCount((prev)=>(prev+1))
+setMainCounter((prev)=>(prev+1))
 }
 const decreement=()=>{
 setCount((prev)=>(prev-1))
+setMainCounter((prev)=>(prev-1))
 }
 
   return (

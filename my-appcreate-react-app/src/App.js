@@ -1,9 +1,14 @@
 import { useState } from "react";
 import "./App.css";
 import Navbar from "./components/Navbar";
-// import About from "./components/About";
+ import About from "./components/About";
 import TextForm from "./components/TextForm";
 import Alert from "./components/Alert";
+import{
+  Routes,
+  Route,
+  Link
+} from "react-router-dom";
 
 function App() {
   const [mode, setMode] = useState("light"); // whether dark mode is enabled or not
@@ -11,7 +16,7 @@ function App() {
 
   const showAlert = (message, type) => {
     setAlert({
-      msg: message,
+      msg: message, 
       type: type,
     });
     setTimeout(()=>{
@@ -41,7 +46,13 @@ function App() {
   };
   return (
     <>
-      {/* <Navbar title="TextUtils" aboutText="AboutbTextUtils"/> */}
+      <Routes>
+      <Route exact path="/about" element={<About/> }/>
+      {/* <Route exact path="/" element={<h1>Home</h1>} /> */}
+      {/* <Route path="/about" element={<About/>} /> */}
+      {/* <Route path="/dashboard" element={<h1>Dashboard...</h1>} />
+      <Route path="/others" element={<h1>Others.....</h1>} /> */}
+    </Routes>
       <Navbar
         title="TextUtils"
         mode={mode}
@@ -50,9 +61,10 @@ function App() {
       />
       <Alert alert={alert} />
       <div className="container" my-3>
-        <TextForm showAlert={showAlert} heading="Enter the text to analyze below" mode={mode} />
-        {/* <About/> */}
+         <TextForm showAlert={showAlert} heading="Enter the text to analyze below" mode={mode} />
+         
       </div>
+     
     </>
   );
 }
